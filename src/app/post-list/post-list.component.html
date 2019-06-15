@@ -1,0 +1,9 @@
+<ul class="list-group">
+	<!-- calls "app-post(list-item.ts" and passes each element into the input variables for each item in the array -->
+    <app-post-list-item *ngFor="let post of postList"
+              			[postTitle]="post.title"
+              			[postText]="post.content"
+              			[postCreationDate]="post.createdAt"
+              			[postLikes]="post.loveIts">
+  	</app-post-list-item>
+</ul>
