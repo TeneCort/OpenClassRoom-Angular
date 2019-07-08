@@ -24,7 +24,7 @@ export class PostListItemComponent implements OnInit {
   	ngOnInit() {
   	}
   	/*
-	* Returns array's "content" value
+	* Returns array's "id" value
 	*
 	*/	
 	getId() {

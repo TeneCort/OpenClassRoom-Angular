@@ -9,10 +9,7 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-	/**
-	* Main App, contains out title and post list that get passed into "app.component.html"
-	* 
-	*/
+
 	postSubscription: Subscription;
 	title = 'My post APP';
   	posts: any[];
