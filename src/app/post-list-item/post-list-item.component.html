@@ -5,16 +5,20 @@
 	<h2>{{ getTitle() }}</h2>
 	<h3>{{ getText() }}</h3>
 	<h4>Created at : {{ getDate() | date: 'short' }}</h4>	
-
-  	<button class="btn btn-success"
- 	 (click)="onLike()"
- 	>Love it!</button>
 	
- 	<button class="btn btn-danger"
- 	 (click)="onDislike()"
- 	>Don't Love it!</button>
+	<div class="flex-container">
 
- 	<button class="btn btn-danger"
- 	 (click)="onDelete()"
- 	>Delete {{ getId() }}</button>
+	  	<button class="btn btn-success"
+	 	 (click)="onLike()"
+	 	>Love it!</button>
+		
+	 	<button class="btn btn-danger"
+	 	 (click)="onDislike()"
+	 	>Don't Love it!</button>
+	
+		<button id="delete" class="btn btn-warning"
+ 		(click)="onDelete()"
+ 		>Delete</button>
+ 	</div>
+ 	
 </li>

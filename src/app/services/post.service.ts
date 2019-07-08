@@ -8,24 +8,21 @@ export class PostService {
 
   	private posts = [
 	  	{	
-	  		id: 0,
 	  		title: "Lorem ipsum dolor.",
 	  		content: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
 	  		loveIts: 1,
 	  		createdAt: new Date()
 	  	},
 	  	{	
-	  		id: 1,
 	  		title: "Lorem ipsum dolor.",
 	  		content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur laudantium eveniet atque et! Dolore, vel.",
 	  		loveIts: 0,
 	  		createdAt: new Date()
 	  	},
 	  	{	
-	  		id: 2,
 	  		title: "Lorem ipsum dolor.",
 	  		content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, id?",
-	  		loveIts: 0,
+	  		loveIts: -1,
 	  		createdAt: new Date()
 	  	}
   	];
@@ -44,16 +41,15 @@ export class PostService {
   		}
 	    postObject.title = title;
 	    postObject.content = content;
-	    postObject.id = this.posts[(this.posts.length - 1)].id + 1; 
-	    console.log(postObject);
 	    this.posts.push(postObject);
 	    this.emitPostSubject();
   	} 	
 
   	deletePost(id: number){
-  		if (id !== -1) {
+  		const post = this.posts[id];
+  		if (id >= -1) {
         	this.posts.splice(id, 1);
-   		}  
+   		} 
   		this.emitPostSubject();
   	}
 }
