@@ -1,37 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { PostService } from './services/post.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
 	/**
 	* Main App, contains out title and post list that get passed into "app.component.html"
 	* 
 	*/
-  	title = 'My post APP';
+	postSubscription: Subscription;
+	title = 'My post APP';
+  	posts: any[];
+	  	
+	constructor(private postService: PostService) {}
 
-  	posts = [
-	  	{
-	  		title: "Lorem ipsum dolor.",
-	  		content: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
-	  		loveIts: 1,
-	  		createdAt: new Date()
-	  	},
-	  	{
-	  		title: "Lorem ipsum dolor.",
-	  		content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur laudantium eveniet atque et! Dolore, vel.",
-	  		loveIts: 0,
-	  		createdAt: new Date()
-	  	},
-	  	{
-	  		title: "Lorem ipsum dolor.",
-	  		content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, id?",
-	  		loveIts: 0,
-	  		createdAt: new Date()
-	  	}
-  	];
-  	
-  	constructor() {}
+  	ngOnInit() {
+  		this.postSubscription = this.postService.postSubject.subscribe(
+  			(posts: any[]) => {
+  				this.posts = posts;
+  			}
+		);
+		this.postService.emitPostSubject();
+  	}
+
+  	ngOnDestroy() {
+		this.postSubscription.unsubscribe();
+  	}
 }
