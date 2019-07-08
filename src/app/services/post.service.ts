@@ -8,21 +8,21 @@ export class PostService {
 
   	private posts = [
 	  	{	
-	  		id: 1,
+	  		id: 0,
 	  		title: "Lorem ipsum dolor.",
 	  		content: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
 	  		loveIts: 1,
 	  		createdAt: new Date()
 	  	},
 	  	{	
-	  		id: 2,
+	  		id: 1,
 	  		title: "Lorem ipsum dolor.",
 	  		content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur laudantium eveniet atque et! Dolore, vel.",
 	  		loveIts: 0,
 	  		createdAt: new Date()
 	  	},
 	  	{	
-	  		id: 3,
+	  		id: 2,
 	  		title: "Lorem ipsum dolor.",
 	  		content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, id?",
 	  		loveIts: 0,
@@ -42,7 +42,7 @@ export class PostService {
   			loveIts: 0,
   			createdAt: new Date()
   		}
-	    postObject.title = name;
+	    postObject.title = title;
 	    postObject.content = content;
 	    postObject.id = this.posts[(this.posts.length - 1)].id + 1; 
 	    console.log(postObject);
